@@ -1,25 +1,21 @@
-﻿*rbutton::
-    Loop
+#Requires AutoHotkey v2.0
+#SingleInstance Force
+
+clickDelay := 25
+
+
+XButton2::
+{
+    global clickDelay
+
+    while GetKeyState("XButton2", "P")
     {
-        GetKeyState,state,rbutton,P
-        if state = U
-            break
-        else
-            Send,{rbutton}
+        if GetKeyState("LButton", "P")
+            Click "Left"
 
+        if GetKeyState("RButton", "P")
+            Click "Right"
+
+        Sleep clickDelay
     }
-return
-
-*lbutton::
-    Loop
-    {
-        GetKeyState,state,lbutton,P
-        if state = U
-            break
-        else
-            Send,{lbutton}
-    }
-return
-
-
-c::Suspend 
+}
